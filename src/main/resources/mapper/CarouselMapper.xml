@@ -161,4 +161,12 @@
       #{id}
     </foreach>
   </update>
+  <select id="findCarouselsByNum" parameterType="int" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from tb_mall_carousel
+    where is_deleted = 0
+    order by carousel_rank desc
+    limit #{number}
+  </select>
 </mapper>

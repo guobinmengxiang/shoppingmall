@@ -34,4 +34,5 @@ public interface CarouselMapper {
      * @return
      */
     int getTotalCarousels(PageQueryUtil pageUtil);
+    List<Carousel> findCarouselsByNum(@Param("number") int number);
 }

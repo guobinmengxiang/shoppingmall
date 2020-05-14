@@ -1,16 +1,20 @@
 package com.bin.shoppingmall.serviceImpl;
 
 import com.bin.shoppingmall.common.ServiceResultEnum;
+import com.bin.shoppingmall.controller.vo.MallIndexCarouselVO;
 import com.bin.shoppingmall.dao.CarouselMapper;
 import com.bin.shoppingmall.entity.Carousel;
 import com.bin.shoppingmall.service.CarouselService;
+import com.bin.shoppingmall.util.BeanUtil;
 import com.bin.shoppingmall.util.DateUtil;
 import com.bin.shoppingmall.util.PageQueryUtil;
 import com.bin.shoppingmall.util.PageResult;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -98,5 +102,15 @@ public class CarouselServiceImpl implements CarouselService {
             return ServiceResultEnum.SUCCESS.getResult();
         }
         return ServiceResultEnum.DB_ERROR.getResult();
+    }
+
+    @Override
+    public List<MallIndexCarouselVO> getCarouselsForIndex(int number) {
+        List<MallIndexCarouselVO> mallIndexCarouselVOS = new ArrayList<>(number);
+        List<Carousel> carousels = carouselmapper.findCarouselsByNum(number);
+        if (!CollectionUtils.isEmpty(carousels)) {
+            mallIndexCarouselVOS = BeanUtil.copyList(carousels, MallIndexCarouselVO.class);
+        }
+        return mallIndexCarouselVOS;
     }
 }
