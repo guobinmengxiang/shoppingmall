@@ -27,6 +27,7 @@ public class AdminServiceImpl implements AdminService {
 
     /**
      * 修改用户名信息
+     *
      * @param record
      * @return
      */
@@ -45,6 +46,7 @@ public class AdminServiceImpl implements AdminService {
 
     /**
      * 修改用户密码信息
+     *
      * @param id
      * @param password
      * @param newPassword

@@ -47,7 +47,7 @@
                enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table> -->
-        <table tableName="tb_mall_goods_info" domainObjectName="Goods"
+        <table tableName="tb_mall_user" domainObjectName="MallUser"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">

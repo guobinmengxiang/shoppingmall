@@ -1,5 +1,11 @@
 package com.bin.shoppingmall.common;
-//创建一个枚举类，用于返回对应信息
+
+/**
+ * @author 13
+ * @qq交流群 658365129
+ * @email 2449207463@qq.com
+ *
+ */
 public enum ServiceResultEnum {
     ERROR("error"),
 
