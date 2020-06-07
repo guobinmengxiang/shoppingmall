@@ -3,6 +3,7 @@ import com.bin.shoppingmall.common.MallCategoryLevelEnum;
 import com.bin.shoppingmall.common.ServiceResultEnum;
 import com.bin.shoppingmall.config.Constants;
 import com.bin.shoppingmall.controller.vo.MallIndexCategoryVO;
+import com.bin.shoppingmall.controller.vo.SearchPageCategoryVO;
 import com.bin.shoppingmall.controller.vo.SecondLevelCategoryVO;
 import com.bin.shoppingmall.controller.vo.ThirdLevelCategoryVO;
 import com.bin.shoppingmall.dao.CategoryMapper;
@@ -153,6 +154,25 @@ public class CategoryServiceImpl implements CategoryService {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public SearchPageCategoryVO getCategoriesForSearch(Long categoryId) {
+        SearchPageCategoryVO searchPageCategoryVO = new SearchPageCategoryVO();
+        Category thirdLevelGoodsCategory = CategoryMapper.selectByPrimaryKey(categoryId);
+        if (thirdLevelGoodsCategory != null && thirdLevelGoodsCategory.getCategoryLevel() == MallCategoryLevelEnum.LEVEL_THREE.getLevel()) {
+            //获取当前三级分类的二级分类
+            Category secondLevelGoodsCategory = CategoryMapper.selectByPrimaryKey(thirdLevelGoodsCategory.getParentId());
+            if (secondLevelGoodsCategory != null && secondLevelGoodsCategory.getCategoryLevel() == MallCategoryLevelEnum.LEVEL_TWO.getLevel()) {
+                //获取当前二级分类下的三级分类List
+                List<Category> thirdLevelCategories = CategoryMapper.selectByLevelAndParentIdsAndNumber(Collections.singletonList(secondLevelGoodsCategory.getCategoryId()), MallCategoryLevelEnum.LEVEL_THREE.getLevel(), Constants.SEARCH_CATEGORY_NUMBER);
+                searchPageCategoryVO.setCurrentCategoryName(thirdLevelGoodsCategory.getCategoryName());
+                searchPageCategoryVO.setSecondLevelCategoryName(secondLevelGoodsCategory.getCategoryName());
+                searchPageCategoryVO.setThirdLevelCategoryList(thirdLevelCategories);
+                return searchPageCategoryVO;
+            }
+        }
+        return null;
     }
 
     public List<Category> selectByLevelAndParentIdsAndNumber(List<Long> parentIds, int categoryLevel) {

@@ -25,5 +25,6 @@ public interface GoodsMapper {
     int getTotalMallGoods(PageQueryUtil pageUtil);
     int batchUpdateSellStatus(@Param("orderIds") Long[] orderIds, @Param("sellStatus") int sellStatus);
     List<Goods> selectByPrimaryKeys(List<Long> goodsIds);
-
+    List<Goods> findMallGoodsListBySearch(PageQueryUtil pageUtil);
+    int getTotalGoodsBySearch(PageQueryUtil pageUtil);
 }

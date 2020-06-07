@@ -1,6 +1,7 @@
 package com.bin.shoppingmall.service;
 
 import com.bin.shoppingmall.controller.vo.MallIndexCategoryVO;
+import com.bin.shoppingmall.controller.vo.SearchPageCategoryVO;
 import com.bin.shoppingmall.entity.Category;
 import com.bin.shoppingmall.util.PageQueryUtil;
 import com.bin.shoppingmall.util.PageResult;
@@ -29,5 +30,12 @@ public interface CategoryService {
      * @return
      */
     List<MallIndexCategoryVO> getCategoriesForIndex();
+    /**
+     * 返回分类数据(搜索页调用)
+     *
+     * @param categoryId
+     * @return
+     */
+    SearchPageCategoryVO getCategoriesForSearch(Long categoryId);
 
 }

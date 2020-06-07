@@ -17,5 +17,7 @@ public class Constants {
     public final static int INDEX_GOODS_HOT_NUMBER = 5;//首页热卖商品数量
     public final static int INDEX_GOODS_NEW_NUMBER = 5;//首页新品数量
     public final static int INDEX_GOODS_RECOMMOND_NUMBER = 10;//首页推荐商品数量
+    public final static int GOODS_SEARCH_PAGE_LIMIT = 10;//搜索分页的默认条数(每页10条)
+    public final static int SEARCH_CATEGORY_NUMBER = 8;//搜索页一级分类的最大数量
     public final static String MALL_USER_SESSION_KEY = "mallUser";//session中user的key
 }

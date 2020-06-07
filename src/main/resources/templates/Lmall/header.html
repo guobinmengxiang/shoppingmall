@@ -11,6 +11,7 @@
     <link rel="bookmark" th:href="@{/Lmall/favicon.ico}"/>
     <script th:src="@{/Lmall/js/jquery-2.1.0.js}" type="text/javascript" charset="utf-8"></script>
     <script th:src="@{/Lmall/js/header.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/Lmall/js/search.js}" type="text/javascript" charset="utf-8"></script>
     <meta name="keywords"
           content="楼楼商城,商城,开源商城,企业级商城,大型商城项目,Java商城,springboot商城,SpringBoot商城项目,Spring Boot 大型线上商城项目实战教程"/>
     <meta name="description"
@@ -20,9 +21,16 @@
 <div class="top" th:fragment="header-fragment">
     <div class="mall-w1230 top1 mall-clear-fix">
         <div class="left">
+            <th:block th:unless="${session.mallUser==null}">
+                <em>喵，欢迎光临楼楼商城，
+                    <th:block th:text="${session.mallUser.nickName}"></th:block>
+                </em>
+            </th:block>
+            <th:block th:if="${session.mallUser==null}">
                 <a th:href="@{/index}"><em>喵，欢迎光临楼楼商城</em></a>
                 <a th:href="@{/login}">请登录</a>
                 <a th:href="@{/register}">免费注册</a>
+            </th:block>
         </div>
         <div class="right">
             <ul class="top-r">
@@ -69,7 +77,7 @@
             <form class="mall-clear-fix" action="##" onsubmit="return false;">
                 <input type="text" name="search-input" id="search-input"
                        placeholder="楼楼商城 应有尽有"/>
-                <button type="submit">搜索</button>
+                <button type="submit" onclick="search()">搜索</button>
             </form>
         </div>
     </div>
