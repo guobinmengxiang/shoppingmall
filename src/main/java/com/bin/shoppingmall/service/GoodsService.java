@@ -30,5 +30,12 @@ public interface GoodsService {
      * @return
      */
     PageResult searchMallGoods(PageQueryUtil pageUtil);
+    /**
+     * 获取商品详情
+     *
+     * @param id
+     * @return
+     */
+    Goods getMallGoodsById(Long id);
 
 }

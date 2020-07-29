@@ -47,7 +47,7 @@
                enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table> -->
-        <table tableName="tb_mall_user" domainObjectName="MallUser"
+        <table tableName="tb_mall_shopping_cart_item" domainObjectName="MallShoppingCartItem"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">

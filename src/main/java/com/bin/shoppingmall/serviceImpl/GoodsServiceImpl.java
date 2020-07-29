@@ -82,4 +82,9 @@ public class GoodsServiceImpl implements GoodsService {
         PageResult pageResult = new PageResult(mallSearchGoodsVOS, total, pageUtil.getLimit(), pageUtil.getPage());
         return pageResult;
     }
+
+    @Override
+    public Goods getMallGoodsById(Long id) {
+        return goodsMapper.selectByPrimaryKey(id);
+    }
 }
